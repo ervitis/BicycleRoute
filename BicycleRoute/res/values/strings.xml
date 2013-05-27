@@ -2,7 +2,11 @@
 <resources>
 
     <string name="app_name">BicycleRoute</string>
-    <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="historial">Historial</string>
+    <string name="empezar">Empezar</string>
+    <string name="grafico">Gráfico</string>
+    <string name="title_activity_google">GoogleActivity</string>
+    <string name="title_activity_historial">Historial</string>
+    <string name="detener">Detener</string>
 
 </resources>
