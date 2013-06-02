@@ -3,7 +3,7 @@ package com.pack.bicycleroute;
 import android.os.Bundle;
 import android.app.Activity;
 
-public class Historial extends Activity {
+public class HistorialActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

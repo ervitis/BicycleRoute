@@ -38,7 +38,7 @@
             android:label="@string/title_activity_google" >
         </activity>
         <activity
-            android:name="com.pack.bicycleroute.Historial"
+            android:name="com.pack.bicycleroute.HistorialActivity"
             android:label="@string/title_activity_historial" >
         </activity>
         

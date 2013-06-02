@@ -7,6 +7,7 @@
     <string name="grafico">Gráfico</string>
     <string name="title_activity_google">GoogleActivity</string>
     <string name="title_activity_historial">Historial</string>
-    <string name="detener">Detener</string>
+    <string name="detener">Comenzar</string>
+    <string name="salir">Salir</string>
 
 </resources>
