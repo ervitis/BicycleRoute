@@ -24,20 +24,24 @@ public class SQLiteAdapter extends SQLiteOpenHelper{
 	 */
 	@Override
 	public void onCreate(SQLiteDatabase sqliteDatabase) {
-		sqliteDatabase.execSQL("CREATE TABLE " + TABLE_RECORRIDOS + "(" +
-				"_id INT PRIMARY KEY AUTOINCREMENT, " +
-				"horaInicio INT NOT NULL, " +
-				"minInicio INT NOT NULL," +
-				"horaFin INT NOT NULL, " +
-				"minFin INT NOT NULL, " +
-				"distancia DOUBLE NOT NULL");
-		sqliteDatabase.execSQL("CREATE TABLE " + TABLE_FECHARECORRIDOS + "(" + 
-				"_id INT PRIMARY KEY AUTOINCREMENT, " +
-				"dia INT NOT NULL," + 
-				"mes INT NOT NULL," +
-				"anho INT NOT NULL," +
-				"_idR INT NOT NULL," +
-				"FOREIGN KEY (_idR) REFERENCES " + TABLE_RECORRIDOS + "(_id) ON UPDATE CASCADE ON DELETE CASCADE)");
+		try{
+			sqliteDatabase.execSQL("CREATE TABLE IF NOT EXISTS" + TABLE_RECORRIDOS + "(" +
+					"_id INTEGER PRIMARY KEY AUTO_INCREMENT, " +
+					"horaInicio INTEGER NOT NULL, " +
+					"minInicio INTEGER NOT NULL," +
+					"horaFin INTEGER NOT NULL, " +
+					"minFin INTEGER NOT NULL, " +
+					"distancia DOUBLE NOT NULL);");
+			sqliteDatabase.execSQL("CREATE TABLE IF NOT EXISTS" + TABLE_FECHARECORRIDOS + "(" + 
+					"_id INTEGER PRIMARY KEY AUTO_INCREMENT, " +
+					"dia INTEGER NOT NULL," + 
+					"mes INTEGER NOT NULL," +
+					"anho INTEGER NOT NULL," +
+					"_idR INTEGER NOT NULL," +
+					"FOREIGN KEY (_idR) REFERENCES " + TABLE_RECORRIDOS + "(_id) ON UPDATE CASCADE ON DELETE CASCADE);");
+		} catch(Exception ex){
+			ex.printStackTrace();
+		}
 	}
 
 	/**
@@ -67,20 +71,23 @@ public class SQLiteAdapter extends SQLiteOpenHelper{
 			SQLiteDatabase db = getWritableDatabase();
 			
 			db.execSQL("INSERT INTO " + TABLE_RECORRIDOS + " (horaInicio, minInicio, horaFin, minFin, distancia) VALUES ( " +
-					horaInicio + ", " + minInicio + ", " + horaFin + ", " + minFin + ", " + distancia + ")");
+					horaInicio + ", " + minInicio + ", " + horaFin + ", " + minFin + ", " + distancia + ");");
 			
 			//get the last id
-			cursor = db.rawQuery("SELECT _id FROM " + TABLE_RECORRIDOS + "ORDER BY _id DESC", null);
+			cursor = db.rawQuery("SELECT MAX(_id) FROM " + TABLE_RECORRIDOS + ";", null);
+			
 			while ( cursor.moveToNext() ){
 				id = cursor.getInt(0);
 			}
 			
+			cursor.close();
+						
 			return id;
 		}catch(Exception ex){
 			return -1;
 		}
 	}
-	
+		
 	/**
 	 * Saves the date
 	 * @param id		the id
@@ -93,8 +100,8 @@ public class SQLiteAdapter extends SQLiteOpenHelper{
 		try{
 			SQLiteDatabase db = getWritableDatabase();
 			
-			db.execSQL("INSERT INTO " + TABLE_FECHARECORRIDOS + "(dia, mes, anho, _idR) VALUES (" +
-					dia + ", " + mes + ", " + anho + ", " + id);
+			db.execSQL("INSERT INTO " + TABLE_FECHARECORRIDOS + " (dia, mes, anho, _idR) VALUES (" +
+					dia + ", " + mes + ", " + anho + ", " + id + ");");
 			
 			return 0;
 		}catch(Exception ex){
