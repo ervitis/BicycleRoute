@@ -7,14 +7,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.androidplot.xy.XYPlot;
+
 public class MainActivity extends Activity {
 	private static final int REQUEST_MAP = 1;
 	private static final int REQUEST_HISTORY = 2;
+	ThreadGrafico threadGrafico;
+	private XYPlot xyPlot;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		xyPlot = (XYPlot) findViewById(R.id.grafica);
+		threadGrafico = new ThreadGrafico(this, xyPlot);
 	}
 	
 	@Override
@@ -42,6 +49,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onResume(){
 		super.onResume();
+		threadGrafico.run();
 	}
 	
 	@Override

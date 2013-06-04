@@ -1,5 +1,7 @@
 package com.pack.bicycleroute;
 
+import java.util.Vector;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -63,6 +65,7 @@ public class SQLiteAdapter extends SQLiteOpenHelper{
 	 * @param distancia		Distance
 	 * @return				The last id used or <code>-1</code> if an exception has been thrown
 	 */
+	synchronized
 	public int guardaRecorrido(int horaInicio, int minInicio, int horaFin, int minFin, double distancia){
 		Cursor cursor;
 		int id = -1;
@@ -96,6 +99,7 @@ public class SQLiteAdapter extends SQLiteOpenHelper{
 	 * @param anho		year
 	 * @return			<code>0</code> no error. <code>1</code> there was an error.
 	 */
+	synchronized
 	public int guardaFecha(int id, int dia, int mes, int anho){
 		try{
 			SQLiteDatabase db = getWritableDatabase();
@@ -106,6 +110,35 @@ public class SQLiteAdapter extends SQLiteOpenHelper{
 			return 0;
 		}catch(Exception ex){
 			return -1;
+		}
+	}
+	
+	/**
+	 * Get the recorrido's cells information for one month
+	 * @return			<code>Vector< String collection></code> with the information.
+	 */
+	synchronized
+	public Vector<String> getListaGrafico(){
+		Vector<String> vector = new Vector<String>();
+		Cursor cursor;
+		SQLiteDatabase db = getReadableDatabase();
+		Fecha fecha = new Fecha();
+		String[] s = {String.valueOf(fecha.getMes())};
+		
+		try{
+			cursor = db.rawQuery("SELECT recorrido.horaInicio, recorrido.minInicio, recorrido.horaFin, recorrido.minFin, recorrido.distancia, fecha_recorridos.dia " +
+				" FROM " + TABLE_FECHARECORRIDOS + ", " + TABLE_RECORRIDOS + 
+				" WHERE recorrido._id = fecha_recorridos._idR AND fecha_recorridos.mes = ?" + 
+				" ORDER BY fecha_recorridos.dia ASC;", s);
+			
+			while ( cursor.moveToNext() ){
+				vector.add(cursor.getInt(0) + "/" + cursor.getInt(1) + "/" + cursor.getInt(2) + "/" + cursor.getInt(3) + "/" + cursor.getDouble(4) + "/" + cursor.getInt(5));
+			}
+			
+			cursor.close();
+			return vector;
+		}catch(Exception ex){
+			return null;
 		}
 	}
 }

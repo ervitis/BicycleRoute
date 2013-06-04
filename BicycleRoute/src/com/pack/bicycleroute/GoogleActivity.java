@@ -314,7 +314,7 @@ public class GoogleActivity extends FragmentActivity implements LocationListener
 			}
 		}
 		else{
-			Toast.makeText(this, "La distancia es muy grande", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "Tienes que andar un poco más", Toast.LENGTH_SHORT).show();
 		}
 		
 		sqliteAdapter.close();
