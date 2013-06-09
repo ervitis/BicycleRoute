@@ -314,9 +314,6 @@ public class GoogleActivity extends FragmentActivity implements LocationListener
 				Toast.makeText(this, this.getResources().getString(R.string.errordbdistance), Toast.LENGTH_SHORT).show();
 			}
 		}
-		else{
-			Toast.makeText(this, this.getResources().getString(R.string.errordbdistance), Toast.LENGTH_SHORT).show();
-		}
 		
 		sqliteAdapter.close();
 	}
