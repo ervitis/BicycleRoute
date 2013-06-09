@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BicycleRoute</string>
+    <string name="historial">Data record</string>
+    <string name="empezar">Begin</string>
+    <string name="grafico">Graph</string>
+    <string name="title_activity_google">My route</string>
+    <string name="title_activity_historial">Data record</string>
+    <string name="detener">Stop</string>
+    <string name="salir">Exit</string>
+
+    <!-- Error messages -->
+    <string name="nodata">You should walk a little more</string>
+    <string name="errordbdistance">The distance couldn\'t be saved</string>
+    <string name="errordbdate">The date couldn\'t be saved</string>
+    <string name="errorseriesxy">Error on the graph\'s axis</string>
+
+    <!-- Table -->
+    <string name="tabla_inicio">Start</string>
+    <string name="tabla_fin">Finish</string>
+    <string name="tabla_distancia">Distance</string>
+    <string name="tabla_dia">Day</string>
+
+    <!-- Button google -->
+    <string name="google_detener">Stop</string>
+    <string name="google_borrar">Delete</string>
+    <string name="google_iniciar">Start</string>
+
+    <!-- Google maps -->
+    <string name="google_funciona">Working</string>
+    <string name="google_para">Stoped</string>
+    <string name="google_gps">Enable the GPS signal</string>
+    <string name="google_gps_wait">Wait for the GPS signal</string>
+
+    <!-- Gráfico -->
+    <string name="nombregrafico">Speed (m/s)</string>
+    <string name="title_activity_license_check">LicenseCheck</string>
+    
+    <!-- Android play store -->
+    <string name="check_license">Check license</string>
+    <string name="checking_license">Checking the license</string>
+    <string name="dont_allow">User not allowed</string>
+    <string name="allow">User allowed</string>
+    <string name="applicationerror">Error</string>
+    <string name="unlicensed_dialog_title">License is not valid</string>
+    <string name="unlicensed_dialog_body">Please, buy the app from Android Play Store</string>
+    <string name="buyapp">Buy it</string>
+    <string name="exit">Exit</string>
+
+</resources>
