@@ -9,5 +9,16 @@
     <string name="title_activity_historial">Historial</string>
     <string name="detener">Comenzar</string>
     <string name="salir">Salir</string>
-
+    
+    <!-- Error messages -->
+    <string name="nodata">Deberías andar un poco más</string>
+		<string name="errordbdistance">Error al guardar la distancia</string>
+		<string name="errordbdate">Error al guardar la fecha</string>
+		<string name="errorseriesxy">Error con las series del gráfico</string>
+		
+		<!-- Table -->
+		<string name="tabla_inicio">Inicio</string>
+		<string name="tabla_fin">Fin</string>
+		<string name="tabla_distancia">Distancia</string>
+		<string name="tabla_dia">Día</string>
 </resources>

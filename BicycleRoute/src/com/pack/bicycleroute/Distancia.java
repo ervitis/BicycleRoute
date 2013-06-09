@@ -21,6 +21,11 @@ public class Distancia {
 				JSONObject nulo2 = pies.getJSONObject(0);
 				JSONObject d = nulo2.getJSONObject("distance");
 				distancia = d.getString("value");
+				
+				//minimal 20 meters
+				if ( (double)Double.parseDouble(distancia) < 20.0 ){
+					distancia = "100000000";
+				}
 			}
 			else{
 				distancia = "100000000";

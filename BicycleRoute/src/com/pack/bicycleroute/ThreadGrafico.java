@@ -35,40 +35,45 @@ public class ThreadGrafico extends Thread implements Runnable{
 		vectorRecorrido = new ArrayList<Recorrido>();
 		sqliteAdapter.close();
 		
-		if ( !vector.isEmpty() ){
-			int i = 0;
-			serieY = new Number[vector.size()];
-			serieX = new Number[vector.size()];
-			
-			while ( i < vector.size() ){
-				t = vector.get(i).split("/");
-				recorrido = new Recorrido((int)Integer.parseInt(t[0].toString()), (int)Integer.parseInt(t[2].toString()), (int)Integer.parseInt(t[1].toString()), (int)Integer.parseInt(t[3].toString()), (int)Integer.parseInt(t[5].toString()), (double)Double.parseDouble(t[4].toString()));
-				vectorRecorrido.add(recorrido);
+		if ( vector != null ){
+			if ( !vector.isEmpty() ){
+				int i = 0;
+				serieY = new Number[vector.size()];
+				serieX = new Number[vector.size()];
 				
-				i++;
+				while ( i < vector.size() ){
+					t = vector.get(i).split("/");
+					recorrido = new Recorrido((int)Integer.parseInt(t[0].toString()), (int)Integer.parseInt(t[2].toString()), (int)Integer.parseInt(t[1].toString()), (int)Integer.parseInt(t[3].toString()), (int)Integer.parseInt(t[5].toString()), (double)Double.parseDouble(t[4].toString()));
+					vectorRecorrido.add(recorrido);
+					
+					i++;
+				}
+				
+				grafico = new Grafico(this.xyPlot, serie);
+				
+				//Speed
+				i = 0;
+				for(Recorrido item : vectorRecorrido){
+					serieX[i] = item.getDia();
+					serieY[i] = item.calculaVelocidad(item.getDistancia(), item.toSegundos(item.calculaDiferenciaTiempo(item.toAMPM(item.getHoraInicio()), item.toAMPM(item.getHoraFin())), item.calculaDiferenciaTiempo(item.getMinInicio(), item.getMinFin())));
+					i++;
+				}
+				
+				try{
+					grafico.setSeries(serieX, serieY);
+				} catch (Exception ex){
+					Toast.makeText(this.context, this.context.getResources().getString(R.string.errorseriesxy), Toast.LENGTH_SHORT).show();
+				}
+								
+				this.xyPlot = grafico.creaGrafico();
+				this.xyPlot.setVisibility(View.VISIBLE);
 			}
-			
-			grafico = new Grafico(this.xyPlot, serie);
-			
-			//Speed
-			i = 0;
-			for(Recorrido item : vectorRecorrido){
-				serieX[i] = item.getDia();
-				serieY[i] = item.calculaVelocidad(item.getDistancia(), item.toSegundos(item.calculaDiferenciaTiempo(item.toAMPM(item.getHoraInicio()), item.toAMPM(item.getHoraFin())), item.calculaDiferenciaTiempo(item.getMinInicio(), item.getMinFin())));
-				i++;
+			else{
+				Toast.makeText(this.context, this.context.getResources().getString(R.string.nodata), Toast.LENGTH_SHORT).show();
 			}
-			
-			try{
-				grafico.setSeries(serieX, serieY);
-			} catch (Exception ex){
-				Toast.makeText(this.context, "serie y: fallo", Toast.LENGTH_SHORT).show();
-			}
-			
-			this.xyPlot = grafico.creaGrafico();
-			this.xyPlot.setVisibility(View.VISIBLE);
 		}
 		else{
-			Toast.makeText(this.context, "No data", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this.context, this.context.getResources().getString(R.string.nodata), Toast.LENGTH_SHORT).show();
 		}
 	}
 }

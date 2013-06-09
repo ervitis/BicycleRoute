@@ -42,7 +42,7 @@
         <activity
             android:name="com.pack.bicycleroute.HistorialActivity"
             android:label="@string/title_activity_historial" 
-            android:screenOrientation="landscape">
+            android:screenOrientation="portrait">
         </activity>
         
         <meta-data 

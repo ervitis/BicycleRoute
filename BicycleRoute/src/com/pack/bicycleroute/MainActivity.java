@@ -20,8 +20,6 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		xyPlot = (XYPlot) findViewById(R.id.grafica);
-		threadGrafico = new ThreadGrafico(this, xyPlot);
 	}
 	
 	@Override
@@ -49,6 +47,9 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onResume(){
 		super.onResume();
+		
+		xyPlot = (XYPlot) findViewById(R.id.grafica);
+		threadGrafico = new ThreadGrafico(this, xyPlot);
 		threadGrafico.run();
 	}
 	

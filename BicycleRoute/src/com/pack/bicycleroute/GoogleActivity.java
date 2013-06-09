@@ -237,6 +237,7 @@ public class GoogleActivity extends FragmentActivity implements LocationListener
 				googleMap.getUiSettings().setZoomGesturesEnabled(false);
 				googleMap.getUiSettings().setRotateGesturesEnabled(false);
 				googleMap.getUiSettings().setTiltGesturesEnabled(false);
+				googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
 				
 				Criteria criteria = new Criteria();
 				String provider = locationManager.getBestProvider(criteria, true);
@@ -333,7 +334,6 @@ public class GoogleActivity extends FragmentActivity implements LocationListener
 				Log.d("Location->", "" + location.getLatitude() + "," + location.getLongitude());
 				
 				googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-				googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
 				
 				if ( polylineOptions != null ){
 					polylineOptions.add(lastLatLng);
@@ -348,7 +348,7 @@ public class GoogleActivity extends FragmentActivity implements LocationListener
 			case 2:
 				break;
 			default:
-				googleMap.moveCamera(CameraUpdateFactory.zoomTo(1));	
+				break;	
 		}
 	}
 
