@@ -9,16 +9,45 @@
     <string name="title_activity_historial">Historial</string>
     <string name="detener">Comenzar</string>
     <string name="salir">Salir</string>
-    
+
     <!-- Error messages -->
     <string name="nodata">Deberías andar un poco más</string>
-		<string name="errordbdistance">Error al guardar la distancia</string>
-		<string name="errordbdate">Error al guardar la fecha</string>
-		<string name="errorseriesxy">Error con las series del gráfico</string>
-		
-		<!-- Table -->
-		<string name="tabla_inicio">Inicio</string>
-		<string name="tabla_fin">Fin</string>
-		<string name="tabla_distancia">Distancia</string>
-		<string name="tabla_dia">Día</string>
+    <string name="errordbdistance">Error al guardar la distancia</string>
+    <string name="errordbdate">Error al guardar la fecha</string>
+    <string name="errorseriesxy">Error con las series del gráfico</string>
+
+    <!-- Table -->
+    <string name="tabla_inicio">Inicio</string>
+    <string name="tabla_fin">Fin</string>
+    <string name="tabla_distancia">Distancia</string>
+    <string name="tabla_dia">Día</string>
+
+    <!-- Button google -->
+    <string name="google_detener">Detener</string>
+    <string name="google_borrar">Borrar</string>
+    <string name="google_iniciar">Iniciar</string>
+
+    <!-- Google maps -->
+    <string name="google_funciona">Funcionando</string>
+    <string name="google_para">Parando</string>
+    <string name="google_gps">Active el GPS</string>
+    <string name="google_gps_wait">Espere a la señal GPS</string>
+
+    <!-- Gráfico -->
+    <string name="nombregrafico">Velocidad de un mes en m/s</string>
+    <string name="title_activity_license_check">LicenseCheck</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <!-- Android play store -->
+    <string name="check_license">Comprobar licencia</string>
+    <string name="checking_license">Comprobando la licencia</string>
+    <string name="dont_allow">No permitir el acceso</string>
+    <string name="allow">Permitir el acceso</string>
+    <string name="applicationerror">Error</string>
+    <string name="unlicensed_dialog_title">Aplicación no licenciada</string>
+    <string name="unlicensed_dialog_body">Por favor, contribuya comprando la aplicación</string>
+    <string name="buyapp">Comprar</string>
+    <string name="exit">Salir</string>
+
 </resources>

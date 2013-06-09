@@ -1,15 +1,16 @@
 package com.pack.bicycleroute;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.widget.Toast;
 
 import com.androidplot.xy.XYPlot;
 
-public class MainActivity extends Activity {
+public class MainActivity extends LicenseCheckActivity {
 	private static final int REQUEST_MAP = 1;
 	private static final int REQUEST_HISTORY = 2;
 	ThreadGrafico threadGrafico;
@@ -18,8 +19,11 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
 		
+		Toast.makeText(this, getResources().getString(R.string.checking_license), Toast.LENGTH_SHORT).show();
+		checkLicense();
 	}
 	
 	@Override

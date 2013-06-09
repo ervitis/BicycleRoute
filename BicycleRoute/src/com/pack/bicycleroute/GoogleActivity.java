@@ -130,7 +130,7 @@ public class GoogleActivity extends FragmentActivity implements LocationListener
 				markerOptionsInicio = new MarkerOptions();
 				markerOptionsFin = new MarkerOptions();
 				setMarker(true);
-				boton.setText("Detener");
+				boton.setText(this.getResources().getString(R.string.google_detener));
 				setInicio();
 				estado = 1;
 				break;
@@ -139,7 +139,7 @@ public class GoogleActivity extends FragmentActivity implements LocationListener
 				//Create the final marker
 				//Set the button text
 				setMarker(false);
-				boton.setText("Borrar marcas");
+				boton.setText(this.getResources().getString(R.string.google_borrar));
 				setFin();
 				estado = 2;
 				guardaDatos();
@@ -148,7 +148,7 @@ public class GoogleActivity extends FragmentActivity implements LocationListener
 				//Delete markers
 				//Set the button text
 				cleanVariables();				
-				boton.setText("Comenzar");
+				boton.setText(this.getResources().getString(R.string.google_iniciar));
 				estado = 0;
 				break;
 		}
@@ -184,7 +184,7 @@ public class GoogleActivity extends FragmentActivity implements LocationListener
 				Log.i("setMarker true", "" + latitud + "," + longitud);
 				markerInicio = googleMap.addMarker(markerOptionsInicio);
 				polylineOptions.add(markerInicio.getPosition());
-				Toast.makeText(this, "Funcionando", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, this.getResources().getString(R.string.google_funciona), Toast.LENGTH_SHORT).show();
 			}
 			else{
 				markerOptionsFin.draggable(false);
@@ -195,7 +195,7 @@ public class GoogleActivity extends FragmentActivity implements LocationListener
 				Log.i("setMarker false", "" + latitud + "," + longitud);
 				markerFin = googleMap.addMarker(markerOptionsFin);
 				polylineOptions.add(markerFin.getPosition());
-				Toast.makeText(this, "Parando", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, this.getResources().getString(R.string.google_para), Toast.LENGTH_SHORT).show();
 			}
 		}
 	}
@@ -248,7 +248,7 @@ public class GoogleActivity extends FragmentActivity implements LocationListener
 				}
 			}
 		}
-		Toast.makeText(getBaseContext(), "Enable GPS", Toast.LENGTH_LONG).show();
+		Toast.makeText(getBaseContext(), this.getResources().getString(R.string.google_gps), Toast.LENGTH_LONG).show();
 		return null;
 	}
 	
@@ -265,7 +265,7 @@ public class GoogleActivity extends FragmentActivity implements LocationListener
 			onLocationChanged(location);
 		}
 		else{
-			Toast.makeText(this, "Wait for the GPS signal", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, this.getResources().getString(R.string.google_gps_wait), Toast.LENGTH_SHORT).show();
 		}
 	}
 	
@@ -307,15 +307,15 @@ public class GoogleActivity extends FragmentActivity implements LocationListener
 			if ( r != -1 ){
 				r = sqliteAdapter.guardaFecha(r, fechaFin.getDia(), fechaFin.getMes(), fechaFin.getAnho());
 				if ( r == -1 ){
-					Toast.makeText(this, "Fallo al guardar la fecha", Toast.LENGTH_SHORT).show();
+					Toast.makeText(this, this.getResources().getString(R.string.errordbdate), Toast.LENGTH_SHORT).show();
 				}
 			}
 			else{
-				Toast.makeText(this, "Fallo al guardar el recorrido", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, this.getResources().getString(R.string.errordbdistance), Toast.LENGTH_SHORT).show();
 			}
 		}
 		else{
-			Toast.makeText(this, "Tienes que andar un poco más", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, this.getResources().getString(R.string.errordbdistance), Toast.LENGTH_SHORT).show();
 		}
 		
 		sqliteAdapter.close();
@@ -340,8 +340,6 @@ public class GoogleActivity extends FragmentActivity implements LocationListener
 					polylineOptions.add(latLng);
 					googleMap.addPolyline(polylineOptions);
 				}
-					
-				//googleMap.addPolyline(new PolylineOptions().add(latLng).width(3).color(Color.RED).visible(true));
 					
 				lastLocation = location;
 				break;

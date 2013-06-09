@@ -49,7 +49,7 @@ public class ThreadGrafico extends Thread implements Runnable{
 					i++;
 				}
 				
-				grafico = new Grafico(this.xyPlot, serie);
+				grafico = new Grafico(this.context, this.xyPlot, serie);
 				
 				//Speed
 				i = 0;

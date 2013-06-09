@@ -40,7 +40,6 @@ public class ThreadTabla extends AsyncTask<Void, Void, ArrayList<Fila>>{
 			}
 			else{
 				return null;
-				
 			}
 		}
 		else{

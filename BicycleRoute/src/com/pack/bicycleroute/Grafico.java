@@ -2,6 +2,7 @@ package com.pack.bicycleroute;
 
 import java.util.Arrays;
 
+import android.content.Context;
 import android.graphics.Color;
 
 import com.androidplot.ui.AnchorPosition;
@@ -22,15 +23,17 @@ import com.androidplot.xy.YLayoutStyle;
 public class Grafico {
 	private XYPlot xyPlot;
 	private XYSeries eje;
+	private Context c;
 	
 	/**
 	 * Constructor for Graph class
 	 * @param idPlot	findViewById
 	 * @param serie		the axis initialized
 	 */
-	public Grafico(XYPlot idPlot, XYSeries serie){
+	public Grafico(Context context, XYPlot idPlot, XYSeries serie){
 		this.eje = serie;
 		this.xyPlot = idPlot;
+		this.c = context;
 	}
 	
 	/**
@@ -63,7 +66,7 @@ public class Grafico {
 		this.xyPlot.getLayoutManager().remove(this.xyPlot.getLegendWidget());
 		this.xyPlot.getLayoutManager().remove(this.xyPlot.getDomainLabelWidget());
 		this.xyPlot.getLayoutManager().remove(this.xyPlot.getRangeLabelWidget());
-		this.xyPlot.setTitle("Velocidad media en un mes (m/s)");
+		this.xyPlot.setTitle(this.c.getResources().getString(R.string.nombregrafico));
 		this.xyPlot.setMarkupEnabled(false);
 		this.xyPlot.position(this.xyPlot.getGraphWidget(), 0, XLayoutStyle.ABSOLUTE_FROM_LEFT, 0, YLayoutStyle.RELATIVE_TO_CENTER, AnchorPosition.LEFT_MIDDLE);
 		
