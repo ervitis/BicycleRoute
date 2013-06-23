@@ -25,6 +25,18 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        
+        <receiver
+            android:name="Widget"
+            android:icon="@drawable/ic_launcher">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data 
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget"/>
+        </receiver>
+        
         <activity
             android:name="com.pack.bicycleroute.MainActivity"
             android:label="@string/app_name"
@@ -48,7 +60,7 @@
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyCQvlR_mu1Clkayj4A7mw2hE8XQAD0ikmE" />
+            android:value="AIzaSyAZjtSpHOjkJTvo88iIJAWEHcZL6wYircA" />
 
         <activity
             android:name="com.pack.bicycleroute.LicenseCheckActivity"

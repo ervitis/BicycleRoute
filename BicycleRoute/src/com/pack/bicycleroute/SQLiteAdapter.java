@@ -141,4 +141,32 @@ public class SQLiteAdapter extends SQLiteOpenHelper{
 			return null;
 		}
 	}
+	
+	/**
+	 * Get the last record
+	 * @return			<code>Vector< String></code> with the information.
+	 */
+	synchronized
+	public Vector<String> getLastRecord(){
+		Vector<String> vector = new Vector<String>();
+		Cursor cursor;
+		SQLiteDatabase db = getReadableDatabase();
+		
+		try{
+			cursor = db.rawQuery("SELECT recorrido.horaInicio, recorrido.minInicio, recorrido.horaFin, recorrido.minFin, recorrido.distancia " +
+					" FROM recorrido, fecha_recorridos " +
+					" WHERE recorrido._id = fecha_recorridos._idR " +
+					" ORDER BY fecha_recorridos._idR DESC " +
+					" LIMIT 1;", null);
+			
+			while ( cursor.moveToNext() ){
+				vector.add(cursor.getInt(0) + "/" + cursor.getInt(1) + "/" + cursor.getInt(2) + "/" + cursor.getInt(3) + "/" + cursor.getInt(4));
+			}
+			
+			cursor.close();
+			return vector;
+		}catch(Exception ex){
+			return null;
+		}
+	}
 }
